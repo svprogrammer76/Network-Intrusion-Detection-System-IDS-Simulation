@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Network IDS Simulation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <div>
+          <p class="eyebrow">Security Operations Center</p>
+          <h1>Network Intrusion Detection System</h1>
+        </div>
+        <div class="controls">
+          <button class="simulate" data-scenario="port_scan">Port Scan</button>
+          <button class="simulate" data-scenario="brute_force">Brute Force</button>
+          <button class="simulate" data-scenario="ddos">DDoS</button>
+          <button class="simulate" data-scenario="beaconing">Beaconing</button>
+          <button class="simulate" data-scenario="exfiltration">Exfiltration</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="stats-grid">
+          <article class="stat-card danger">
+            <span class="label">Total Events</span>
+            <strong id="total-events">0</strong>
+          </article>
+          <article class="stat-card warning">
+            <span class="label">Blocked</span>
+            <strong id="blocked-events">0</strong>
+          </article>
+          <article class="stat-card critical">
+            <span class="label">Critical</span>
+            <strong id="critical-events">0</strong>
+          </article>
+          <article class="stat-card neutral">
+            <span class="label">Risk Level</span>
+            <strong id="risk-level">Normal</strong>
+          </article>
+        </section>
+
+        <section class="response-panel">
+          <div>
+            <h2>Attack Breakdown</h2>
+            <ul id="attack-breakdown" class="breakdown-list"></ul>
+          </div>
+          <div>
+            <h2>Severity Mix</h2>
+            <ul id="severity-breakdown" class="breakdown-list"></ul>
+          </div>
+        </section>
+
+        <section class="table-panel">
+          <div class="panel-header">
+            <h2>Recent Events</h2>
+            <button id="refresh-events">Refresh</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Time</th>
+                  <th>Signature</th>
+                  <th>Source</th>
+                  <th>Target</th>
+                  <th>Severity</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="events-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
